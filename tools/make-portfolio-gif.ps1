@@ -2,13 +2,13 @@ Add-Type -AssemblyName System.Drawing
 
 $root = Split-Path -Parent $PSScriptRoot
 $imageDir = Join-Path $root 'assets\images'
-$out = Join-Path $imageDir 'portfolio-arcade.gif'
+$out = Join-Path $imageDir 'portfolio-quest.gif'
 $background = [System.Drawing.Bitmap]::FromFile((Join-Path $imageDir 'pixel-night-mountains.png'))
 $ufo = [System.Drawing.Bitmap]::FromFile((Join-Path $imageDir 'custom-ufo-v2.png'))
 $cow = [System.Drawing.Bitmap]::FromFile((Join-Path $imageDir 'custom-cow-v2.png'))
 $frames = @()
 
-for ($i = 0; $i -lt 18; $i++) {
+for ($i = 0; $i -lt 24; $i++) {
   $frame = New-Object System.Drawing.Bitmap 640,360
   $g = [System.Drawing.Graphics]::FromImage($frame)
   $g.InterpolationMode = [System.Drawing.Drawing2D.InterpolationMode]::NearestNeighbor
@@ -16,16 +16,16 @@ for ($i = 0; $i -lt 18; $i++) {
   $g.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::None
   $g.DrawImage($background, 0, 0, 640, 360)
 
-  $ufoX = 250 + [int](18 * [Math]::Sin($i * 0.45))
+  $ufoX = 245 + [int](28 * [Math]::Sin($i * 0.45))
   $ufoY = 38 + [int](4 * [Math]::Sin($i * 0.8))
   $ufoRect = New-Object System.Drawing.Rectangle $ufoX,$ufoY,150,100
 
   $g.FillRectangle((New-Object System.Drawing.SolidBrush ([System.Drawing.Color]::FromArgb(34, 9, 233, 255))), 0, 0, 640, 360)
   $g.DrawImage($ufo, $ufoRect)
 
-  $abducting = $i -ge 8
+  $abducting = $i -ge 12
   if ($abducting) {
-    $progress = [Math]::Min(1, ($i - 8) / 7)
+    $progress = [Math]::Min(1, ($i - 12) / 8)
     $cowX = 286
     $cowY = 230 - [int](125 * $progress)
     $beamTop = $ufoY + 67
@@ -39,7 +39,7 @@ for ($i = 0; $i -lt 18; $i++) {
     $cowY = 230 + [int](2 * [Math]::Sin($i * 0.9))
   }
 
-  if ($i -lt 16) {
+  if ($i -lt 21) {
     $g.DrawImage($cow, (New-Object System.Drawing.Rectangle $cowX,$cowY,105,70))
   }
 
@@ -66,13 +66,15 @@ public static class Gdi {
 }
 '@
 $gifEncoder = New-Object System.Windows.Media.Imaging.GifBitmapEncoder
+$pngDir = Join-Path ([System.IO.Path]::GetTempPath()) 'portfolio-quest-frames'
+New-Item -ItemType Directory -Force $pngDir | Out-Null
+$frameIndex = 0
 foreach ($source in $frames) {
-  $handle = $source.GetHbitmap()
-  try {
-    $bitmapSource = [System.Windows.Interop.Imaging]::CreateBitmapSourceFromHBitmap($handle, [IntPtr]::Zero, [System.Windows.Int32Rect]::Empty, [System.Windows.Media.Imaging.BitmapSizeOptions]::FromEmptyOptions())
-    $bitmapSource.Freeze()
-    $gifEncoder.Frames.Add([System.Windows.Media.Imaging.BitmapFrame]::Create([System.Windows.Media.Imaging.BitmapSource]$bitmapSource))
-  } finally { [Gdi]::DeleteObject($handle) | Out-Null }
+  $pngPath = Join-Path $pngDir ("frame-{0:D2}.png" -f $frameIndex)
+  $source.Save($pngPath, [System.Drawing.Imaging.ImageFormat]::Png)
+  $frameUri = New-Object System.Uri($pngPath)
+  $gifEncoder.Frames.Add([System.Windows.Media.Imaging.BitmapFrame]::Create($frameUri, [System.Windows.Media.Imaging.BitmapCreateOptions]::PreservePixelFormat, [System.Windows.Media.Imaging.BitmapCacheOption]::OnLoad))
+  $frameIndex++
 }
 $stream = [System.IO.File]::Open($out, [System.IO.FileMode]::Create)
 try { $gifEncoder.Save($stream) } finally { $stream.Dispose() }
