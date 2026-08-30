@@ -57,15 +57,24 @@ for ($i = 0; $i -lt 18; $i++) {
   $font.Dispose(); $g.Dispose(); $frames += $frame
 }
 
-$encoder = [System.Drawing.Imaging.Encoder]::SaveFlag
-$params = New-Object System.Drawing.Imaging.EncoderParameters 1
-$params.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter $encoder, ([long][System.Drawing.Imaging.EncoderValue]::MultiFrame)
-$codec = [System.Drawing.Imaging.ImageCodecInfo]::GetImageEncoders() | Where-Object MimeType -eq 'image/gif'
-$frames[0].Save($out, $codec, $params)
-$params.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter $encoder, ([long][System.Drawing.Imaging.EncoderValue]::FrameDimensionTime)
-for ($i = 1; $i -lt $frames.Count; $i++) { $frames[0].SaveAdd($frames[$i], $params) }
-$params.Param[0] = New-Object System.Drawing.Imaging.EncoderParameter $encoder, ([long][System.Drawing.Imaging.EncoderValue]::Flush)
-$frames[0].SaveAdd($params)
+Add-Type -AssemblyName PresentationCore,WindowsBase
+Add-Type @'
+using System;
+using System.Runtime.InteropServices;
+public static class Gdi {
+  [DllImport("gdi32.dll")] public static extern bool DeleteObject(IntPtr hObject);
+}
+'@
+$gifEncoder = New-Object System.Windows.Media.Imaging.GifBitmapEncoder
+foreach ($source in $frames) {
+  $handle = $source.GetHbitmap()
+  try {
+    $bitmapSource = [System.Windows.Interop.Imaging]::CreateBitmapSourceFromHBitmap($handle, [IntPtr]::Zero, [System.Windows.Int32Rect]::Empty, [System.Windows.Media.Imaging.BitmapSizeOptions]::FromEmptyOptions())
+    $gifEncoder.Frames.Add([System.Windows.Media.Imaging.BitmapFrame]::Create($bitmapSource))
+  } finally { [Gdi]::DeleteObject($handle) | Out-Null }
+}
+$stream = [System.IO.File]::Open($out, [System.IO.FileMode]::Create)
+try { $gifEncoder.Save($stream) } finally { $stream.Dispose() }
 $frames | ForEach-Object Dispose
 $background.Dispose(); $ufo.Dispose(); $cow.Dispose()
 Write-Output "Created $out"
