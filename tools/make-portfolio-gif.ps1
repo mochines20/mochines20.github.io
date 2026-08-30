@@ -70,7 +70,8 @@ foreach ($source in $frames) {
   $handle = $source.GetHbitmap()
   try {
     $bitmapSource = [System.Windows.Interop.Imaging]::CreateBitmapSourceFromHBitmap($handle, [IntPtr]::Zero, [System.Windows.Int32Rect]::Empty, [System.Windows.Media.Imaging.BitmapSizeOptions]::FromEmptyOptions())
-    $gifEncoder.Frames.Add([System.Windows.Media.Imaging.BitmapFrame]::Create($bitmapSource))
+    $bitmapSource.Freeze()
+    $gifEncoder.Frames.Add([System.Windows.Media.Imaging.BitmapFrame]::Create([System.Windows.Media.Imaging.BitmapSource]$bitmapSource))
   } finally { [Gdi]::DeleteObject($handle) | Out-Null }
 }
 $stream = [System.IO.File]::Open($out, [System.IO.FileMode]::Create)
