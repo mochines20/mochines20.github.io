@@ -2,7 +2,7 @@
 
 # `JEYSI.EXE // DEV ARCADE`
 
-![System Boot Animation](./assets/images/loader.gif)
+![Portfolio Arcade Animation](./assets/images/portfolio-arcade.gif)
 
 ### `PLAYER 01: JOHN CARLO MANALO`
 
