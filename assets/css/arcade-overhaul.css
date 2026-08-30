@@ -1,0 +1,398 @@
+/* Jeysi Dev Arcade: a distinct product-like interface layered over the content. */
+:root {
+  --arcade-bg: #061225;
+  --arcade-panel: #0b1d38;
+  --arcade-panel-2: #102949;
+  --arcade-line: rgba(118, 211, 255, .25);
+  --arcade-cyan: #65e5ff;
+  --arcade-lime: #c7f36b;
+  --arcade-pink: #ff6b9c;
+  --arcade-gold: #ffd34e;
+  --arcade-text: #f2f7ff;
+  --arcade-muted: #a7bdd6;
+}
+
+body.portfolio-game {
+  background: var(--arcade-bg);
+  color: var(--arcade-text);
+  font-family: 'VT323', monospace;
+}
+
+body.portfolio-game::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1000;
+  opacity: .16;
+  background: linear-gradient(90deg, transparent 49.5%, rgba(101,229,255,.16) 50%, transparent 50.5%), linear-gradient(transparent 49.5%, rgba(101,229,255,.1) 50%, transparent 50.5%);
+  background-size: 6rem 6rem;
+  mix-blend-mode: screen;
+}
+
+body.portfolio-game header {
+  height: 7.4rem;
+  background: rgba(5, 17, 35, .94);
+  border-bottom: 2px solid var(--arcade-cyan);
+  box-shadow: 0 0 2rem rgba(101,229,255,.12);
+}
+
+body.portfolio-game header .logo {
+  letter-spacing: .12rem;
+  color: var(--arcade-text);
+}
+
+body.portfolio-game header .logo i { color: var(--arcade-lime); }
+body.portfolio-game header .navbar ul li a { color: var(--arcade-muted); text-transform: uppercase; letter-spacing: .08rem; }
+body.portfolio-game header .navbar ul li a.active,
+body.portfolio-game header .navbar ul li a:hover { color: var(--arcade-lime); }
+
+body.portfolio-game .game-shell > section {
+  position: relative;
+  isolation: isolate;
+  padding-top: 15rem !important;
+  padding-bottom: 8rem !important;
+}
+
+body.portfolio-game .game-shell > section::before {
+  content: attr(id) ' // zone';
+  position: absolute;
+  top: 11rem;
+  left: 7%;
+  color: var(--arcade-cyan);
+  font: 1rem 'Press Start 2P', monospace;
+  letter-spacing: .15rem;
+  opacity: .8;
+}
+
+body.portfolio-game .game-shell > section::after {
+  content: '';
+  position: absolute;
+  inset: 11rem 5% 5rem;
+  border: 1px solid var(--arcade-line);
+  border-radius: 1.2rem;
+  pointer-events: none;
+  z-index: -1;
+}
+
+body.portfolio-game .game-shell > section:nth-child(1) { background: radial-gradient(circle at 78% 32%, rgba(101,229,255,.18), transparent 25%), #07172f; }
+body.portfolio-game .game-shell > section:nth-child(2) { background: radial-gradient(circle at 15% 70%, rgba(255,107,156,.15), transparent 25%), #101a36; }
+body.portfolio-game .game-shell > section:nth-child(3) { background: radial-gradient(circle at 80% 70%, rgba(199,243,107,.12), transparent 28%), #092329; }
+body.portfolio-game .game-shell > section:nth-child(4) { background: radial-gradient(circle at 30% 40%, rgba(255,211,78,.13), transparent 24%), #211b32; }
+body.portfolio-game .game-shell > section:nth-child(5) { background: radial-gradient(circle at 75% 25%, rgba(101,229,255,.13), transparent 30%), #081d33; }
+body.portfolio-game .game-shell > section:nth-child(6) { background: radial-gradient(circle at 20% 30%, rgba(255,107,156,.13), transparent 28%), #1d132e; }
+body.portfolio-game .game-shell > section:nth-child(7) { background: radial-gradient(circle at 75% 70%, rgba(199,243,107,.13), transparent 28%), #0b2530; }
+body.portfolio-game .game-shell > section:nth-child(8) { background: #050e20; }
+
+body.portfolio-game .heading {
+  position: relative;
+  z-index: 2;
+  width: fit-content;
+  margin: 0 auto 3rem;
+  padding: 1.2rem 2rem;
+  border: 2px solid var(--arcade-cyan);
+  background: rgba(6,18,37,.88);
+  box-shadow: .6rem .6rem 0 rgba(255,107,156,.55);
+  color: var(--arcade-text);
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(1.2rem, 2vw, 2.1rem) !important;
+  letter-spacing: .02rem;
+}
+
+body.portfolio-game .heading span { color: var(--arcade-lime); }
+body.portfolio-game .home .content,
+body.portfolio-game .about .row,
+body.portfolio-game .education .box-container,
+body.portfolio-game .contact .container {
+  position: relative;
+  z-index: 2;
+}
+
+body.portfolio-game .home .content {
+  max-width: 65rem;
+  padding: 3rem;
+  background: rgba(6,18,37,.72);
+  border-left: .5rem solid var(--arcade-lime);
+  box-shadow: 1.2rem 1.2rem 0 rgba(0,0,0,.22);
+}
+
+body.portfolio-game .home .content h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: clamp(2.2rem, 4vw, 5rem);
+  line-height: 1.5;
+}
+
+body.portfolio-game .home .image img,
+body.portfolio-game .about .image img {
+  border: .5rem solid var(--arcade-cyan);
+  border-radius: 1rem;
+  box-shadow: 1rem 1rem 0 var(--arcade-pink);
+  filter: saturate(1.08) contrast(1.04);
+}
+
+body.portfolio-game .pixel-hud {
+  border-color: var(--arcade-lime);
+  background: rgba(4,15,31,.9);
+}
+
+body.portfolio-game .about .row {
+  gap: 5rem;
+  align-items: stretch;
+  padding: 4rem;
+  border: 1px solid var(--arcade-line);
+  background: linear-gradient(135deg, rgba(16,41,73,.9), rgba(11,29,56,.62));
+}
+
+body.portfolio-game .about .content { padding: 1rem; }
+body.portfolio-game .about .content h3 { color: var(--arcade-lime); font: 2.5rem 'Press Start 2P', monospace; }
+body.portfolio-game .about .content p { color: var(--arcade-text); font-size: 2.2rem; line-height: 1.25; }
+body.portfolio-game .about .box-container { border-top: 1px dashed var(--arcade-cyan); border-bottom: 1px dashed var(--arcade-cyan); }
+body.portfolio-game .about .box p { font-size: 1.8rem; }
+
+body.portfolio-game .skills .container,
+body.portfolio-game .education .box-container,
+body.portfolio-game .work .box-container,
+body.portfolio-game .experience .timeline,
+body.portfolio-game .contact .container {
+  position: relative;
+  z-index: 2;
+}
+
+body.portfolio-game .skills .container {
+  padding: 2rem;
+  border: 2px solid var(--arcade-lime);
+  background: rgba(5,18,28,.68);
+}
+
+body.portfolio-game .skills .bar {
+  border-color: var(--arcade-line);
+  background: rgba(16,41,73,.74);
+  transition: transform .18s steps(2,end), border-color .18s ease;
+}
+body.portfolio-game .skills .bar .info img {
+  width: 6.4rem !important;
+  height: 6.4rem !important;
+  max-width: 6.4rem !important;
+  object-fit: contain;
+  image-rendering: pixelated;
+  background: transparent !important;
+  padding: .45rem;
+  border: 3px solid var(--arcade-cyan);
+  clip-path: polygon(0 .45rem, .45rem .45rem, .45rem 0, calc(100% - .45rem) 0, calc(100% - .45rem) .45rem, 100% .45rem, 100% calc(100% - .45rem), calc(100% - .45rem) calc(100% - .45rem), calc(100% - .45rem) 100%, .45rem 100%, .45rem calc(100% - .45rem), 0 calc(100% - .45rem));
+  filter: saturate(1.18) contrast(1.1) drop-shadow(4px 4px 0 #061225);
+}
+body.portfolio-game .skills .bar:hover { transform: translateY(-.6rem); border-color: var(--arcade-lime); }
+
+body.portfolio-game .education .box,
+body.portfolio-game .work .box,
+body.portfolio-game .experience .content,
+body.portfolio-game .contact .container {
+  border: 2px solid var(--arcade-line);
+  background: rgba(11,29,56,.82);
+  box-shadow: .8rem .8rem 0 rgba(0,0,0,.2);
+}
+
+body.portfolio-game .education .box { overflow: hidden; }
+body.portfolio-game .education .box .image img { filter: saturate(.8) contrast(1.1); }
+body.portfolio-game .education .content h3,
+body.portfolio-game .work .tag h3 { color: var(--arcade-lime); }
+body.portfolio-game .work .box .content .tag,
+body.arcade-subpage .work .box .content .tag { background: var(--arcade-lime); }
+body.portfolio-game .work .box .content .tag h3,
+body.arcade-subpage .work .box .content .tag h3 { color: var(--arcade-bg); }
+body.portfolio-game .education .content p,
+body.portfolio-game .education .content h4 { color: var(--arcade-text); }
+
+body.portfolio-game .work .box-container { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; }
+body.portfolio-game .work .box { width: auto; margin: 0; }
+body.portfolio-game .work .box:hover { transform: translateY(-.7rem) rotate(-.3deg); }
+body.portfolio-game .work .box img { height: 22rem; object-fit: cover; }
+body.portfolio-game .work .viewall { margin-top: 2.2rem; }
+
+/* Projects are presented as a Game Boy cartridge shelf instead of a tiny
+   overlay grid. Keep the image and mission details visible at the same time. */
+body.portfolio-game .work .work-frame {
+  max-width: 118rem;
+  margin: 0 auto;
+  padding: 2.6rem;
+  background: linear-gradient(180deg, rgba(113, 151, 90, .14), rgba(11, 29, 56, .9));
+  border: .45rem solid #52625d;
+  box-shadow: inset 0 0 0 .45rem #182b2e, inset 0 0 0 .7rem #a9bd84, .8rem .8rem 0 rgba(0,0,0,.3);
+}
+body.portfolio-game .work .box-container { max-width:none; margin:0; padding:0; border:0; background:transparent; box-shadow:none; }
+body.portfolio-game .work .box-container::before {
+  content: 'CARTRIDGE SELECT  //  04 FEATURED BUILDS';
+  display: block;
+  grid-column: 1 / -1;
+  padding: .8rem 1rem;
+  color: #d9e8bd;
+  background: #263e3b;
+  border: 2px solid #91ab78;
+  font: .72rem 'Press Start 2P', monospace;
+  letter-spacing: .08rem;
+}
+body.portfolio-game .work .box {
+  display: flex;
+  flex-direction: column;
+  min-height: 42rem;
+  border: .35rem solid #52625d;
+  background: #182b2e;
+  box-shadow: .55rem .55rem 0 #07131d, inset 0 0 0 .3rem #314842;
+}
+body.portfolio-game .work .box img {
+  flex: 0 0 25rem;
+  width: 100%;
+  height: 25rem;
+  padding: .5rem;
+  object-fit: cover;
+  background: #9eb67a;
+  border-bottom: .35rem solid #52625d;
+  image-rendering: pixelated;
+}
+body.portfolio-game .work .box .content {
+  position: static !important;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.2rem 1.35rem 1.35rem;
+  background: #263e3b !important;
+  transform: none !important;
+}
+body.portfolio-game .work .box .content .tag { padding: .8rem .95rem; border: 2px solid #182b2e; background: #a9bd84; }
+body.portfolio-game .work .box .content .tag h3 { font-size: clamp(.9rem, 1.15vw, 1.3rem); line-height: 1.45; }
+body.portfolio-game .work .box .desc p { color: #e9f2dc; font-size: 1.55rem; line-height: 1.25; }
+body.portfolio-game .work .box .project-status { color: #cbe88f !important; font-size: .72rem !important; }
+body.portfolio-game .work .box .btns { margin-top: 1rem; }
+body.portfolio-game .work .box:hover { transform: translateY(-.7rem) rotate(-.3deg) scale(1.015); border-color: #cbe88f; }
+
+body.portfolio-game .experience .timeline::before { background: var(--arcade-cyan); }
+body.portfolio-game .experience .timeline .container { transform: none !important; }
+body.portfolio-game .experience .timeline { transform: none !important; }
+body.portfolio-game .experience .content { border-left: .5rem solid var(--arcade-pink); }
+body.portfolio-game .experience .timeline { max-width: 150rem; }
+body.portfolio-game .experience .timeline .container { padding: 1.8rem 4rem; }
+body.portfolio-game .experience .timeline .content { min-height: 15rem; padding: 1.3rem 1.5rem; }
+body.portfolio-game .experience .tag h2 { color: var(--arcade-lime); font-family: 'Press Start 2P', monospace; font-size: clamp(1.25rem, 1.4vw, 1.8rem); line-height: 1.5; }
+body.portfolio-game .experience .desc h3 { color: var(--arcade-cyan); font-size: clamp(1.35rem, 1.55vw, 1.9rem); line-height: 1.35; }
+body.portfolio-game .experience .desc p { font-size: clamp(1.25rem, 1.35vw, 1.7rem); line-height: 1.3; }
+
+body.portfolio-game .contact .container { padding: 3rem; }
+body.portfolio-game .contact-pitch { position:relative; z-index:2; max-width:72rem; margin:-1.5rem auto 1.5rem; color:var(--arcade-text); text-align:center; font-size:2rem; line-height:1.25; }
+body.portfolio-game .contact-options { position:relative; z-index:2; display:flex; flex-wrap:wrap; justify-content:center; gap:.7rem; max-width:82rem; margin:0 auto 2rem; }
+body.portfolio-game .contact-options span { padding:.65rem 1rem; color:var(--arcade-lime); border:2px solid var(--arcade-cyan); background:rgba(6,18,37,.86); font: .72rem 'Press Start 2P',monospace; }
+body.portfolio-game .contact .field input,
+body.portfolio-game .contact .message textarea { border: 2px solid var(--arcade-cyan); background: #07172f; color: white; }
+body.portfolio-game .contact .button-area button { background: var(--arcade-lime); color: #061225; border: 3px solid #061225; box-shadow: .4rem .4rem 0 var(--arcade-pink); }
+
+/* Give the project illustration enough presence beside the inquiry form. */
+body.portfolio-game .contact .content { align-items: center; gap: 2rem; }
+body.portfolio-game .contact .content .image-box { flex: 0 0 48%; max-width: none; margin-left: 0; display: flex; justify-content: center; }
+body.portfolio-game .contact .content .image-box img { width: 100%; height: auto; max-width: 38rem; object-fit: contain; transform: scale(1.2); transform-origin: center; }
+
+body.portfolio-game .footer { background: #030a16 !important; }
+
+/* ScrollReveal adds inline translate offsets that can make cards collide with
+   headings in a snap-scrolling panel. The level transition already provides
+   the motion, so keep every panel's document flow stable. */
+html.sr body.portfolio-game .game-shell > section * { transform: none !important; }
+html.sr body.portfolio-game .skills .bar:hover,
+html.sr body.portfolio-game .work .box:hover { transform: translateY(-.6rem) !important; }
+body.portfolio-game .footer .box h3 { color: var(--arcade-lime); font-family: 'Press Start 2P', monospace; }
+.game-arrow:active { transform:translate(4px,4px); box-shadow:0 0 0 var(--arcade-pink); }
+.level-transition { position:fixed; inset:0; z-index:1500; display:grid; place-items:center; background:repeating-linear-gradient(0deg,rgba(7,23,47,.98) 0 8px,rgba(101,229,255,.9) 8px 10px); clip-path:inset(0 100% 0 0); pointer-events:none; }
+.level-transition::before { content:'SYSTEM // TRANSFER'; position:absolute; top:44%; color:var(--arcade-lime); font:1rem 'Press Start 2P',monospace; letter-spacing:.16rem; }
+.level-transition::after { content:attr(data-level); position:absolute; top:51%; color:white; font:clamp(1rem,2vw,1.7rem) 'Press Start 2P',monospace; }
+.level-transition.is-running { animation:screen-wipe .9s steps(8,end) both; }
+@keyframes screen-wipe { 0%{clip-path:inset(0 100% 0 0)} 38%{clip-path:inset(0 0 0 0)} 65%{clip-path:inset(0 0 0 0)} 100%{clip-path:inset(0 0 0 100%)} }
+
+/* Standalone project and experience pages use the same visual language. */
+body.arcade-subpage { background: var(--arcade-bg); color: var(--arcade-text); font-family: 'VT323', monospace; }
+body.arcade-subpage header { background: rgba(5,17,35,.96); border-bottom: 2px solid var(--arcade-cyan); }
+body.arcade-subpage header .logo { color: var(--arcade-text); }
+body.arcade-subpage header .logo i { color: var(--arcade-lime); }
+body.arcade-subpage header .navbar ul li a { color: var(--arcade-muted); text-transform: uppercase; }
+body.arcade-subpage header .navbar ul li a.active,
+body.arcade-subpage header .navbar ul li a:hover { color: var(--arcade-lime); }
+body.arcade-subpage > section { min-height: 100vh; padding: 13rem 7% 8rem; background: radial-gradient(circle at 80% 20%, rgba(101,229,255,.14), transparent 30%), var(--arcade-bg); }
+body.arcade-subpage .heading { width: fit-content; margin: 0 auto 3rem; padding: 1rem 2rem; border: 2px solid var(--arcade-cyan); background: var(--arcade-panel); box-shadow: .6rem .6rem 0 var(--arcade-pink); font-family: 'Press Start 2P', monospace; }
+body.arcade-subpage .heading span { color: var(--arcade-lime); }
+body.arcade-subpage .work .box-container { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; }
+body.arcade-subpage .work .box { width: auto; margin: 0; border: 2px solid var(--arcade-line); background: var(--arcade-panel); }
+body.arcade-subpage .work .box:hover { transform: translateY(-.7rem); border-color: var(--arcade-lime); }
+body.arcade-subpage .experience .content { border: 2px solid var(--arcade-line); border-left: .5rem solid var(--arcade-pink); background: var(--arcade-panel); }
+body.arcade-subpage .experience .tag h2 { color: var(--arcade-lime); font-family: 'Press Start 2P', monospace; font-size: 1.15rem; }
+body.arcade-subpage .footer { background: #030a16 !important; }
+
+@media (max-width: 900px) {
+  body.portfolio-game .work .box-container,
+  body.arcade-subpage .work .box-container { grid-template-columns: 1fr; }
+  body.portfolio-game .about .row { padding: 2rem; gap: 2rem; }
+  body.portfolio-game .work .work-frame { padding: 1.6rem; }
+}
+
+@media (max-width: 600px) {
+  body.portfolio-game .game-shell > section { padding: 13rem 2rem 6rem !important; }
+  body.portfolio-game .game-shell > section::before { left: 2rem; font-size: .7rem; }
+  body.portfolio-game .game-shell > section::after { inset: 10.5rem 1rem 3rem; }
+  body.portfolio-game .home .content { padding: 2rem 1.5rem; }
+  body.portfolio-game .home .content h2 { font-size: 1.8rem; }
+  body.portfolio-game .about .row, body.portfolio-game .contact .container { padding: 1.3rem; }
+  body.portfolio-game .about .content p { font-size: 1.7rem; }
+  body.portfolio-game .contact-pitch { margin:-1rem auto 1rem; font-size:1.6rem; }
+  body.portfolio-game .contact-options span { font-size:.52rem; }
+  body.portfolio-game .contact .content .image-box img { transform: none; }
+  body.portfolio-game .work .work-frame { padding: 1rem; border-width: .3rem; }
+  body.portfolio-game .work .box { min-height: 0; }
+  body.portfolio-game .work .box img { flex-basis: 15rem; height: 15rem; }
+  body.portfolio-game .heading, body.arcade-subpage .heading { font-size: .8rem !important; padding: .8rem 1rem; }
+  body.arcade-subpage > section { padding: 11rem 1.2rem 5rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body.portfolio-game .skills .bar, body.portfolio-game .work .box { transition: none; }
+}
+
+/* Pixel-game email launcher modal. */
+[id*="tawk"], [class*="tawk"], iframe[src*="tawk.to"] { display:none !important; visibility:hidden !important; pointer-events:none !important; }
+.mail-modal { position:fixed; inset:0; z-index:2000; display:grid; place-items:center; padding:1.5rem; background:rgba(3,10,22,.84); opacity:0; visibility:hidden; pointer-events:none; transition:opacity .2s steps(2,end),visibility .2s; }
+.mail-modal[aria-hidden="true"] { display:none !important; }
+.mail-modal[aria-hidden="false"] { display:grid !important; }
+.mail-modal.is-open { opacity:1; visibility:visible; pointer-events:auto; }
+.mail-modal__panel { position:relative; width:min(100%,54rem); padding:3rem; color:#edf5ff; background:#0b1d38; border:.35rem solid var(--arcade-cyan); box-shadow:.8rem .8rem 0 var(--arcade-pink),inset 0 0 0 .45rem #172652; transform:translateY(1rem) scale(.96); transition:transform .25s steps(3,end); }
+.mail-modal.is-open .mail-modal__panel { transform:translateY(0) scale(1); }
+.mail-modal__close { position:absolute; top:.8rem; right:.8rem; z-index:2; width:2.5rem; height:2.5rem; color:#061225; background:var(--arcade-lime); border:3px solid #061225; font:1.4rem 'Press Start 2P',monospace; cursor:pointer; }
+.mail-modal__eyebrow { margin:0 0 1.5rem; color:var(--arcade-cyan); font:.68rem 'Press Start 2P',monospace; letter-spacing:.08rem; }
+.mail-modal h2 { margin:0 0 1rem; color:#ffe44a; font:clamp(1.3rem,3vw,2rem) 'Press Start 2P',monospace; line-height:1.5; }.mail-modal h2 span { color:var(--arcade-lime); }
+.mail-modal__copy { margin:0 0 2rem; color:#edf5ff; font-size:1.8rem; line-height:1.3; }
+.mail-modal__actions { display:grid; grid-template-columns:repeat(2,1fr); gap:1rem; }.mail-choice { min-height:5rem; color:#061225; border:3px solid #061225; box-shadow:.35rem .35rem 0 var(--arcade-pink); font:.78rem 'Press Start 2P',monospace; cursor:pointer; }.mail-choice span { margin-right:.5rem; font-size:1.2rem; }.gmail-choice { background:#ffe44a; }.outlook-choice { background:#72e6fa; }.mail-choice:hover,.mail-modal__close:hover { transform:translate(-2px,-2px); filter:brightness(1.08); }.mail-modal__later { display:block; margin:1.6rem auto 0; color:#9bb3cb; background:transparent; border:0; font:.58rem 'Press Start 2P',monospace; cursor:pointer; }
+@media (max-width:600px) { .mail-modal__panel { padding:2.2rem 1.4rem 1.5rem; }.mail-modal__actions { grid-template-columns:1fr; }.mail-modal__copy { font-size:1.5rem; } }
+
+/* Standalone projects gallery: a larger three-column Game Boy catalog. */
+body.arcade-subpage .work { padding: 13rem 4% 8rem; background: radial-gradient(circle at 50% 12%, rgba(101,229,255,.12), transparent 32%), var(--arcade-bg); }
+body.arcade-subpage .work .heading { margin-bottom: 2.5rem; }
+body.arcade-subpage .work .button-group { width: min(100%, 92rem); margin: 0 auto 2.5rem; gap: .8rem; }
+body.arcade-subpage .work .button-group .btn { padding: 1rem 1.3rem; color: var(--arcade-text); border: 2px solid var(--arcade-cyan); background: #0b1d38; font: .68rem 'Press Start 2P',monospace; }
+body.arcade-subpage .work .button-group .btn.is-checked, body.arcade-subpage .work .button-group .btn:hover { color: #061225; background: var(--arcade-lime); }
+body.arcade-subpage .work .box-container { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 2rem; max-width: 128rem; height: auto !important; min-height: 0; margin: 0 auto; padding: 2.5rem; background: #182b2e; border: .45rem solid #52625d; box-shadow: inset 0 0 0 .45rem #314842, inset 0 0 0 .7rem #a9bd84, .8rem .8rem 0 rgba(0,0,0,.28); }
+body.arcade-subpage .work .grid-item { width: auto !important; position: relative !important; left: auto !important; top: auto !important; margin: 0 !important; }
+body.arcade-subpage .work .box-container .box { display: flex; flex-direction: column; width: auto !important; min-height: 42rem; margin: 0; border: .35rem solid #52625d; border-radius: 0; background: #263e3b; box-shadow: .55rem .55rem 0 #07131d, inset 0 0 0 .3rem #314842; }
+body.arcade-subpage .work .box-container .box img { flex: 0 0 24rem; width: 100%; height: 24rem; padding: .5rem; object-fit: cover; background: #9eb67a; border-bottom: .35rem solid #52625d; image-rendering: pixelated; }
+body.arcade-subpage .work .box-container .box .content { position: static !important; display: flex; flex: 1; flex-direction: column; justify-content: space-between; height: auto; padding: 1.2rem 1.3rem 1.35rem; background: #263e3b !important; }
+body.arcade-subpage .work .box-container .box { min-height: 56rem; overflow: visible; }
+body.arcade-subpage .work .box-container .box .content .desc { flex: 1; display: flex; flex-direction: column; min-height: 0; }
+body.arcade-subpage .work .box-container .box .content .tag { min-height: 5rem; padding: .8rem .9rem; border: 2px solid #182b2e; background: #a9bd84; }
+body.arcade-subpage .work .box-container .box .content .tag h3 { color: #142228; font-size: 1.05rem; line-height: 1.4; }
+body.arcade-subpage .work .box-container .box .desc p { color: #edf5ff; font-size: 1.55rem; line-height: 1.25; }
+body.arcade-subpage .work .box-container .box .project-status { color: #cbe88f !important; font-size: .72rem !important; line-height: 1.4; }
+body.arcade-subpage .work .box-container .box .desc .btns { margin-top: auto; padding-top: 1.2rem; }
+body.arcade-subpage .work .box-container .box .desc .btns .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 3.8rem; padding: .8rem 1rem; color: #061225; background: var(--arcade-cyan); border: 3px solid #061225; box-shadow: .3rem .3rem 0 var(--arcade-pink); font: .63rem 'Press Start 2P',monospace; }
+body.arcade-subpage .work .box-container .box:hover { transform: translateY(-.65rem) scale(1.015); border-color: #cbe88f; }
+@media (max-width:900px) { body.arcade-subpage .work .box-container { grid-template-columns: repeat(2,minmax(0,1fr)); padding: 1.5rem; } }
+@media (max-width:600px) { body.arcade-subpage .work { padding: 11rem 1.2rem 6rem; } body.arcade-subpage .work .box-container { grid-template-columns: 1fr; padding: 1rem; } body.arcade-subpage .work .box-container .box { min-height: 0; } body.arcade-subpage .work .box-container .box img { flex-basis: 17rem; height: 17rem; } }
+
+/* About metadata uses the warm arcade palette instead of the legacy blue link color. */
+body.portfolio-game .about .content .box p span {
+  color: var(--arcade-gold) !important;
+  text-shadow: 1px 1px 0 rgba(0,0,0,.35);
+}

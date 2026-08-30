@@ -1,0 +1,115 @@
+[
+    {
+        "name": "Python",
+        "icon": "https://img.icons8.com/?size=100&id=13441&format=png&color=000000"
+    },
+    {
+        "name": "PHP",
+        "icon": "https://img.icons8.com/?size=100&id=13460&format=png&color=000000"
+    },
+    {
+        "name": "MySQL",
+        "icon": "https://img.icons8.com/?size=100&id=9nLaR5KFGjN0&format=png&color=000000"
+    },
+    {
+        "name": "PostgreSQL",
+        "icon": "https://img.icons8.com/?size=100&id=38561&format=png&color=000000"
+    },
+    {
+        "name": "HTML",
+        "icon": "https://img.icons8.com/?size=100&id=20909&format=png&color=000000"
+    },
+    {
+        "name": "CSS",
+        "icon": "https://img.icons8.com/?size=100&id=21278&format=png&color=000000"
+    },
+    {
+        "name": "JavaScript",
+        "icon": "https://img.icons8.com/?size=100&id=108784&format=png&color=000000"
+    },
+    {
+        "name": "Figma",
+        "icon": "https://img.icons8.com/?size=100&id=t8w5GINDaxLp&format=png&color=000000"
+    },
+    {
+        "name": "Canva",
+        "icon": "https://img.icons8.com/?size=100&id=iWw83PVcBpLw&format=png&color=000000"
+    },
+    {
+        "name": "Photoshop",
+        "icon": "https://img.icons8.com/?size=100&id=13677&format=png&color=000000"
+    },
+    {
+        "name": "Illustrator",
+        "icon": "https://img.icons8.com/?size=100&id=13631&format=png&color=000000"
+    },
+    {
+        "name": "React",
+        "icon": "https://img.icons8.com/?size=100&id=asWSSTBrDlTW&format=png&color=000000"
+    },
+    {
+        "name": "TypeScript",
+        "icon": "https://img.icons8.com/?size=100&id=uJM6fQYqDaZK&format=png&color=000000"
+    },
+    {
+        "name": "Node.js",
+        "icon": "https://img.icons8.com/?size=100&id=54087&format=png&color=000000"
+    },
+    {
+        "name": "Express.js",
+        "icon": "https://img.icons8.com/?size=100&id=kg46nzoJrmTR&format=png&color=000000"
+    },
+    {
+        "name": "PostgreSQL",
+        "icon": "https://img.icons8.com/?size=100&id=38561&format=png&color=000000"
+    },
+    {
+        "name": "Supabase",
+        "icon": "./assets/images/skill-supabase.png"
+    },
+    {
+        "name": "Power BI",
+        "icon": "./assets/images/skill-power-bi.png"
+    },
+    {
+        "name": "Power Automate",
+        "icon": "./assets/images/skill-power-automate.png"
+    },
+    {
+        "name": "Microsoft Azure",
+        "icon": "https://img.icons8.com/?size=100&id=VLKafOkk3sBX&format=png&color=000000"
+    },
+    {
+        "name": "Power Query",
+        "icon": "./assets/images/skill-power-query.png"
+    },
+    {
+        "name": "TailwindCSS",
+        "icon": "./assets/images/skill-tailwind-css.png"
+    },
+    {
+        "name": "Prisma ORM",
+        "icon": "./assets/images/skill-prisma.png"
+    },
+    {
+        "name": "Git",
+        "icon": "https://img.icons8.com/?size=100&id=20906&format=png&color=000000"
+    },
+    {
+        "name": "AI / LLM Integration",
+        "icon": "./assets/images/skill-ai-llm.png"
+    },
+    {
+        "name": "OCR Automation",
+        "icon": "https://img.icons8.com/?size=100&id=11113&format=png&color=000000"
+    },
+    {
+        "name": "RAG / pgvector",
+        "icon": "https://img.icons8.com/?size=100&id=20909&format=png&color=000000"
+    },
+    {
+        "name": "Ubuntu",
+        "icon": "./assets/images/skill-ubuntu.svg"
+    }
+    
+]
