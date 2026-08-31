@@ -106,7 +106,11 @@
     // Freeze the roaming character before measuring it. This prevents the
     // target from drifting away while the UFO is flying into position.
     cow.style.animationPlayState = 'paused';
-    const cowRect = cow.getBoundingClientRect();
+    let cowRect = cow.getBoundingClientRect();
+    // Persist the cow's animated screen position before switching animation
+    // names. Otherwise CSS snaps it back to the off-screen starting point.
+    cow.style.left = Math.max(8, Math.min(window.innerWidth - cowRect.width - 8, cowRect.left)) + 'px';
+    cowRect = cow.getBoundingClientRect();
     // Align the UFO's center to the cow's center so the beam lands on the
     // character even when the cow is mid-roam or the viewport changes size.
     const ufoRect = ufo.getBoundingClientRect();
@@ -129,6 +133,7 @@
     alertBox.textContent = 'ALIEN EVENT // ABDUCTION INCOMING';
     alertBox.classList.add('is-visible');
     window.setTimeout(() => {
+      window.clearInterval(alignmentTimer);
       // Recalculate once the approach transition settles, keeping the beam
       // centered if the cow's layout shifted during the approach.
       const alignedCow = cow.getBoundingClientRect();
@@ -159,6 +164,7 @@
       window.setTimeout(() => {
         cow.classList.remove('cow-hidden', 'cow-targeted');
         cow.style.animationPlayState = '';
+        cow.style.left = '';
         ufo.classList.remove('ufo-hidden');
         ufo.style.left = '12vw';
         ufo.style.top = '20vh';

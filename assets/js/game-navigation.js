@@ -7,6 +7,8 @@
   const level = document.querySelector('.game-level');
   const progress = document.querySelector('.game-progress span');
   const transition = document.querySelector('.level-transition');
+  const previousButton = document.querySelector('.game-prev');
+  const nextButton = document.querySelector('.game-next');
   let current = 0;
   let wheelLocked = false;
   let jumping = false;
@@ -25,6 +27,7 @@
     }
     shell.scrollTo({ left: panels[current].offsetLeft, behavior: 'smooth' });
     updateHud(current);
+    if (panels[current].id) history.replaceState(null, '', `#${panels[current].id}`);
     window.setTimeout(() => { jumping = false; }, 900);
   }
 
@@ -32,12 +35,21 @@
     if (level) level.textContent = `LEVEL ${String(index + 1).padStart(2, '0')} / ${labels[index] || 'PORTFOLIO'}`;
     if (progress) progress.style.width = `${((index + 1) / panels.length) * 100}%`;
     panels.forEach((panel, panelIndex) => panel.classList.toggle('is-active', panelIndex === index));
+    if (previousButton) {
+      previousButton.disabled = index === 0;
+      previousButton.setAttribute('aria-disabled', String(index === 0));
+    }
+    if (nextButton) {
+      nextButton.disabled = index === panels.length - 1;
+      nextButton.setAttribute('aria-disabled', String(index === panels.length - 1));
+    }
   }
 
-  document.querySelector('.game-prev')?.addEventListener('click', () => goTo(current - 1));
-  document.querySelector('.game-next')?.addEventListener('click', () => goTo(current + 1));
+  previousButton?.addEventListener('click', () => goTo(current - 1));
+  nextButton?.addEventListener('click', () => goTo(current + 1));
 
   document.addEventListener('keydown', (event) => {
+    if (event.target.closest('input, textarea, select, button, [contenteditable="true"]')) return;
     if (event.key === 'ArrowRight' || event.key === 'PageDown') { event.preventDefault(); goTo(current + 1); }
     if (event.key === 'ArrowLeft' || event.key === 'PageUp') { event.preventDefault(); goTo(current - 1); }
     if (event.key === 'Home') { event.preventDefault(); goTo(0); }
@@ -63,6 +75,8 @@
       const index = target ? panels.indexOf(target) : -1;
       if (index < 0) return;
       event.preventDefault();
+      document.querySelector('.navbar')?.classList.remove('nav-toggle');
+      document.getElementById('menu')?.classList.remove('fa-times');
       goTo(index);
     });
   });
@@ -76,5 +90,9 @@
     });
   }, { root: shell, threshold: .6 });
   panels.forEach((panel) => observer.observe(panel));
-  updateHud(0);
+  const initialPanel = location.hash ? document.querySelector(location.hash) : null;
+  const initialIndex = initialPanel ? panels.indexOf(initialPanel) : 0;
+  current = initialIndex >= 0 ? initialIndex : 0;
+  shell.scrollTo({ left: panels[current].offsetLeft, behavior: 'auto' });
+  updateHud(current);
 })();

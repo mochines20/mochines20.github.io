@@ -45,14 +45,6 @@ $(document).ready(function () {
         });
     });
 
-    // smooth scrolling
-    $('a[href*="#"]').on('click', function (e) {
-        e.preventDefault();
-        $('html, body').animate({
-            scrollTop: $($(this).attr('href')).offset().top,
-        }, 500, 'linear')
-    });
-
     // Prepare a brief and let the visitor choose Gmail or Outlook.
     $("#contact-form").submit(function (event) {
         event.preventDefault();
@@ -96,7 +88,7 @@ document.addEventListener('visibilitychange',
 
 // <!-- typed js effect starts -->
 var typed = new Typed(".typing-text", {
-    strings: ["Frontend Development", "Backend Development", "Web Designing", "System Development", "Graphic Design", "Data Analysis", "Power Automate", "Power BI", "Microsoft Azure", "AI/OCR Integration", "Business Intelligence", "Process Automation", "ERP Development", "Software Architecture"],
+    strings: ["Full-Stack Development", "AI / OCR Automation", "RAG Pipelines", "Power BI Analytics", "Enterprise Automation"],
     loop: true,
     typeSpeed: 50,
     backSpeed: 25,
@@ -118,11 +110,13 @@ function showSkills(skills) {
     let skillsContainer = document.getElementById("skillsContainer");
     let skillHTML = "";
     skills.forEach(skill => {
+        const localIcon = skill.icon && skill.icon.startsWith('./');
+        const initials = skill.name.split(/\s+/).map(word => word[0]).join('').slice(0, 3).toUpperCase();
         skillHTML += `
         <div class="bar">
               <div class="info">
-                <img src=${skill.icon} alt="${skill.name} icon" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" />
-                <span class="skill-fallback" aria-hidden="true">${skill.name.substring(0, 2).toUpperCase()}</span>
+                ${localIcon ? `<img src="${skill.icon}" alt="" loading="lazy" decoding="async" onerror="this.style.display='none'; this.nextElementSibling.classList.add('skill-fallback--active');" />` : ''}
+                <span class="skill-fallback ${localIcon ? '' : 'skill-fallback--active'}" aria-hidden="true">${initials}</span>
                 <span>${skill.name}</span>
               </div>
             </div>`
@@ -168,7 +162,7 @@ function showProjects(projects) {
         .forEach(project => {
         projectHTML += `
         <div class="box tilt">
-      <img draggable="false" src="/assets/images/${project.image}.png" alt="${project.name} project placeholder" />
+      <img draggable="false" src="/assets/images/${project.image}.png" alt="${project.name} interface preview" loading="lazy" decoding="async" />
       <div class="content">
         <div class="tag">
         <h3>${project.name}</h3>
@@ -177,7 +171,7 @@ function showProjects(projects) {
           <p>${project.desc}</p>
           <small class="project-status">${project.status || 'Company Project — Internal / Confidential'}</small>
           <div class="btns">
-            <a href="${project.links.view}" class="btn"><i class="fas fa-envelope"></i> Contact for Details</a>
+            <a href="${project.links.view}" class="btn"><i class="fas fa-envelope"></i> Discuss Similar Project</a>
           </div>
         </div>
       </div>
@@ -186,12 +180,13 @@ function showProjects(projects) {
     projectsContainer.innerHTML = projectHTML;
 
     // <!-- tilt js effect starts -->
-    VanillaTilt.init(document.querySelectorAll(".tilt"), {
+    if (window.VanillaTilt) VanillaTilt.init(document.querySelectorAll(".tilt"), {
         max: 15,
     });
     // <!-- tilt js effect ends -->
 
     /* ===== SCROLL REVEAL ANIMATION ===== */
+    if (!window.ScrollReveal) return;
     const srtop = ScrollReveal({
         origin: 'top',
         distance: '80px',
@@ -213,7 +208,7 @@ fetchData("projects").then(data => {
 });
 
 // <!-- tilt js effect starts -->
-VanillaTilt.init(document.querySelectorAll(".tilt"), {
+if (window.VanillaTilt) VanillaTilt.init(document.querySelectorAll(".tilt"), {
     max: 15,
 });
 // <!-- tilt js effect ends -->
@@ -229,26 +224,8 @@ VanillaTilt.init(document.querySelectorAll(".tilt"), {
 // window.onload = fadeOut;
 // pre loader end
 
-// disable developer mode
-document.onkeydown = function (e) {
-    if (e.keyCode == 123) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-    }
-}
-
 /* ===== SCROLL REVEAL ANIMATION ===== */
+if (window.ScrollReveal) {
 const srtop = ScrollReveal({
     origin: 'top',
     distance: '80px',
@@ -294,3 +271,4 @@ srtop.reveal('.experience .timeline .container', { interval: 400 });
 /* SCROLL CONTACT */
 srtop.reveal('.contact .container', { delay: 400 });
 srtop.reveal('.contact .container .form-group', { delay: 400 });
+}

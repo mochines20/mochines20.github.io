@@ -2,7 +2,7 @@
   {
     "name": "AP Invoice Processing Automation System",
     "image": "ap-invoice-platform",
-    "category": "basicweb",
+    "category": "ai automation systems",
     "desc": "AI-powered invoice automation covering OCR extraction, validation, multi-tier approval routing, SharePoint monitoring, SFTP transfer, and accounting integrations. Company Project — Internal / Confidential.",
     "status": "Company Project — Internal / Confidential",
     "links": { "view": "mailto:johncarlomanalo165@gmail.com?subject=AP%20Invoice%20Automation%20Project%20Inquiry", "code": "mailto:johncarlomanalo165@gmail.com?subject=AP%20Invoice%20Automation%20Project%20Inquiry" }
@@ -10,7 +10,7 @@
   {
     "name": "SMART Tech Pack-to-Costing Approval Tool",
     "image": "cmsoon",
-    "category": "mern",
+    "category": "ai automation systems",
     "desc": "Enterprise costing workflow with guided validation, multi-tier approvals, audit logging, self-hosted LLM assistance, and a RAG-powered historical costing repository. Company Project — Internal / In Progress.",
     "status": "Company Project — Internal / In Progress",
     "links": { "view": "mailto:johncarlomanalo165@gmail.com?subject=SMART%20Costing%20Tool%20Inquiry", "code": "mailto:johncarlomanalo165@gmail.com?subject=SMART%20Costing%20Tool%20Inquiry" }
@@ -18,7 +18,7 @@
   {
     "name": "Brand Analytics Dashboard",
     "image": "powerbi-brand-analysis",
-    "category": "basicweb",
+    "category": "data",
     "desc": "Executive Power BI dashboard for brand analytics and Manual versus Automation comparisons, designed and delivered in one week for daily strategic reporting. Company Project — Internal / Confidential.",
     "status": "Company Project — Internal / Confidential",
     "links": { "view": "mailto:johncarlomanalo165@gmail.com?subject=Brand%20Analytics%20Dashboard%20Inquiry", "code": "mailto:johncarlomanalo165@gmail.com?subject=Brand%20Analytics%20Dashboard%20Inquiry" }
@@ -26,7 +26,7 @@
   {
     "name": "Budget Management and Expense Tracker",
     "image": "budget-management-system",
-    "category": "mern",
+    "category": "automation systems",
     "desc": "Enterprise budget system with multi-level approvals, nine-role access control, real-time commitment tracking, cash advance management, reconciliation, reporting, and audit trails. Company Project — Internal / Confidential.",
     "status": "Company Project — Internal / Confidential",
     "links": { "view": "mailto:johncarlomanalo165@gmail.com?subject=Budget%20Management%20System%20Inquiry", "code": "mailto:johncarlomanalo165@gmail.com?subject=Budget%20Management%20System%20Inquiry" }
@@ -34,7 +34,7 @@
   {
     "name": "IT Headquarters Portal",
     "image": "it-headquarters-command-center",
-    "category": "basicweb",
+    "category": "systems",
     "desc": "Centralized IT hub combining internal systems, project progress tracking, ITSM, purchase-order tools, organization charts, and Power BI dashboards. Company Project — Internal / Confidential.",
     "status": "Company Project — Internal / Confidential",
     "links": { "view": "mailto:johncarlomanalo165@gmail.com?subject=IT%20Headquarters%20Portal%20Inquiry", "code": "mailto:johncarlomanalo165@gmail.com?subject=IT%20Headquarters%20Portal%20Inquiry" }
@@ -42,7 +42,7 @@
   {
     "name": "Purchase Order Cutting System Automation",
     "image": "po-cutting-ai-workspace",
-    "category": "lamp",
+    "category": "ai automation systems",
     "desc": "Automated PO creation, intelligent data extraction, validation, routing, approval, and real-time tracking using Qwen LLM assistance. Company Project — Internal / Confidential.",
     "status": "Company Project — Internal / Confidential",
     "links": { "view": "mailto:johncarlomanalo165@gmail.com?subject=Purchase%20Order%20Automation%20Inquiry", "code": "mailto:johncarlomanalo165@gmail.com?subject=Purchase%20Order%20Automation%20Inquiry" }
@@ -50,7 +50,7 @@
   {
     "name": "Enterprise ITSM Ticketing and Core IT Reporting",
     "image": "itsm-ticketing-system",
-    "category": "basicweb",
+    "category": "systems",
     "desc": "Internal IT service-management platform for incidents, service requests, ticket tracking, SLA monitoring, and company-wide IT performance reporting. Company Project — Internal / Confidential.",
     "status": "Company Project — Internal / Confidential",
     "links": { "view": "mailto:johncarlomanalo165@gmail.com?subject=ITSM%20System%20Inquiry", "code": "mailto:johncarlomanalo165@gmail.com?subject=ITSM%20System%20Inquiry" }
@@ -58,7 +58,7 @@
   {
     "name": "Interactive Organization Chart",
     "image": "organization-chart-dashboard",
-    "category": "basicweb",
+    "category": "systems data",
     "desc": "Dynamic organization chart that visualizes company structure and helps employees and management navigate department hierarchies and reporting lines. Company Project — Internal / Confidential.",
     "status": "Company Project — Internal / Confidential",
     "links": { "view": "mailto:johncarlomanalo165@gmail.com?subject=Organization%20Chart%20Inquiry", "code": "mailto:johncarlomanalo165@gmail.com?subject=Organization%20Chart%20Inquiry" }

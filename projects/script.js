@@ -47,7 +47,7 @@ function showProjects(projects) {
         projectsHTML += `
         <div class="grid-item ${project.category}">
         <div class="box tilt">
-      <img draggable="false" src="/assets/images/${project.image}.png" alt="${project.name} project placeholder" />
+      <img draggable="false" src="/assets/images/${project.image}.png" alt="${project.name} interface preview" loading="lazy" decoding="async" />
       <div class="content">
         <div class="tag">
         <h3>${project.name}</h3>
@@ -56,7 +56,7 @@ function showProjects(projects) {
           <p>${project.desc}</p>
           <small class="project-status">${project.status || 'Company Project — Internal / Confidential'}</small>
           <div class="btns">
-            <a href="${project.links.view}" class="btn"><i class="fas fa-envelope"></i> Contact for Details</a>
+            <a href="${project.links.view}" class="btn"><i class="fas fa-envelope"></i> Discuss Similar Project</a>
           </div>
         </div>
       </div>
@@ -83,20 +83,26 @@ function showProjects(projects) {
     // srtop.reveal('.work .box', { interval: 200 });
 
     // isotope filter products
-    var $grid = $('.box-container').isotope({
+    var $grid = $.fn.isotope ? $('.box-container').isotope({
         itemSelector: '.grid-item',
         layoutMode: 'fitRows',
         masonry: {
             columnWidth: 200
         }
-    });
+    }) : null;
 
     // filter items on button click
     $('.button-group').on('click', 'button', function () {
         $('.button-group').find('.is-checked').removeClass('is-checked');
         $(this).addClass('is-checked');
         var filterValue = $(this).attr('data-filter');
-        $grid.isotope({ filter: filterValue });
+        if ($grid) {
+            $grid.isotope({ filter: filterValue });
+        } else {
+            document.querySelectorAll('.grid-item').forEach(item => {
+                item.hidden = filterValue !== '*' && !item.matches(filterValue);
+            });
+        }
     });
 }
 
@@ -104,22 +110,3 @@ getProjects().then(data => {
     showProjects(data);
 })
 // fetch projects end
-
-// disable developer mode
-document.onkeydown = function (e) {
-    if (e.keyCode == 123) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'I'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'C'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.shiftKey && e.keyCode == 'J'.charCodeAt(0)) {
-        return false;
-    }
-    if (e.ctrlKey && e.keyCode == 'U'.charCodeAt(0)) {
-        return false;
-    }
-}

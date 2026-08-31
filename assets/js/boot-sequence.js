@@ -2,6 +2,7 @@
   const screen = document.getElementById('boot-screen');
   const progress = document.getElementById('boot-progress');
   const status = document.getElementById('boot-status');
+  const skipButton = document.getElementById('boot-skip');
   if (!screen) return;
 
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -15,6 +16,9 @@
   ];
   let finished = false;
   let timers = [];
+  let hasBooted = false;
+
+  try { hasBooted = sessionStorage.getItem('jeysi-booted') === 'true'; } catch (_) {}
 
   function finish() {
     if (finished) return;
@@ -24,21 +28,28 @@
     if (status) status.textContent = 'READY PLAYER 01';
     document.body.classList.remove('booting');
     document.body.classList.add('boot-complete');
+    try { sessionStorage.setItem('jeysi-booted', 'true'); } catch (_) {}
     window.setTimeout(() => screen.remove(), 650);
   }
 
   function run() {
     if (reducedMotion) return finish();
+    const stepDuration = hasBooted ? 95 : 430;
+    const finishDelay = hasBooted ? 650 : 2850;
     phases.forEach(([value, message], index) => {
       timers.push(window.setTimeout(() => {
         if (progress) progress.style.width = value + '%';
         if (status) status.textContent = message;
-      }, index * 820));
+      }, index * stepDuration));
     });
-    timers.push(window.setTimeout(finish, 5900));
+    timers.push(window.setTimeout(finish, finishDelay));
   }
 
   document.addEventListener('keydown', finish, { once: true });
   screen.addEventListener('click', finish, { once: true });
+  skipButton?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    finish();
+  }, { once: true });
   run();
 })();
